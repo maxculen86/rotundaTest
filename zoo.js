@@ -1,6 +1,6 @@
 class Animal {
-    constructor(pharse) {
-        this.catchphrase = pharse;
+    constructor() {
+        this.catchphrase =  "";
     }
  
     speak(words) {
@@ -12,19 +12,21 @@ class Animal {
 }
 
 class Lion extends Animal {
+    catchphrase =  " roar ";
     speak(words) {
         console.log(this.translate(words, this.catchphrase));
     }
 }
 
 class Tiger extends Animal {
+    catchphrase =  " grrr ";
     speak(words) {
         console.log(this.translate(words, this.catchphrase));
     }
 }
 
-let tiger = new Tiger(" grrr ");
-let lion = new Lion(" roar ");
+let tiger = new Tiger();
+let lion = new Lion();
 
 lion.speak("I'm a lion");
 tiger.speak("Lions suck");
