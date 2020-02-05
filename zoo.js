@@ -1,22 +1,21 @@
 class Animal {
     speak(words) {
-        console.log(words);
+        console.log(this.translate(words, ""));
+    }
+    translate(words, catchphrase ) {
+        return words.replace(/ /g, catchphrase).concat(catchphrase);
     }
   }
 
 class Lion extends Animal {
     speak(words) {
-        var language = " roar ";
-        var translate = words.replace(/ /g, language).concat(language);
-        console.log(translate);
+        console.log(this.translate(words, " roar "));
     }
 }
 
 class Tiger extends Animal {
     speak(words) {
-        var language = " grrr ";
-        var translate = words.replace(/ /g, language).concat(language);
-        console.log(translate);
+        console.log(this.translate(words, " grrr "));
     }
 }
 
