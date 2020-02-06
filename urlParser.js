@@ -1,4 +1,4 @@
-var url = `/6/api/listings/3?sort=desc&limit=10`;
+var url = `/6/api/listings/3?sort=desc&limit=10`; //Given URL.
 
 function parseURL(url){ 
     const regex = /\/([0-9])?\/(api)+\/(listings)\/([0-9]+)\?sort=([a-zA-Z]+)&limit=([0-9]+)/gm;
@@ -14,4 +14,4 @@ function parseURL(url){
 
 }
 
-console.log(parseURL(url));
+console.log(parseURL(url)); // Log for check results only. 
