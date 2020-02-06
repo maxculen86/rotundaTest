@@ -6,7 +6,7 @@ class Animal {
         console.log(this.translate(words, this.catchphrase));
     }
     translate(words, catchphrase ) {
-        return words.replace(/ /g, catchphrase).concat(catchphrase);
+        return words.replace(/ /g, catchphrase).concat(catchphrase).trimEnd();
     }
 }
 
