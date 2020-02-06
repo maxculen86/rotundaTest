@@ -1,10 +1,9 @@
 class Animal {
     constructor() {
-        this.catchphrase =  "";
+        this.catchphrase;
     }
- 
     speak(words) {
-        console.log(this.translate(words, catchphrase));
+        console.log(this.translate(words, this.catchphrase));
     }
     translate(words, catchphrase ) {
         return words.replace(/ /g, catchphrase).concat(catchphrase);
@@ -12,17 +11,11 @@ class Animal {
 }
 
 class Lion extends Animal {
-    catchphrase =  " roar ";
-    speak(words) {
-        console.log(this.translate(words, this.catchphrase));
-    }
+    catchphrase = " roar "
 }
 
 class Tiger extends Animal {
-    catchphrase =  " grrr ";
-    speak(words) {
-        console.log(this.translate(words, this.catchphrase));
-    }
+    catchphrase = " grrr "
 }
 
 let tiger = new Tiger();
