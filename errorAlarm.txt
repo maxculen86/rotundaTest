@@ -1,0 +1,36 @@
+General terms:
+
+-   Function error trapping code. TimeStamp should be included.
+-   Store the trapped error in an incremental log file.
+-   Run the sendEmail function when the error is stored at file.
+-   Email function must check the timeStamp of the last email sended for the email address.
+-   In order to check the timeStamp, email function have to store the data in a data base / file. 
+
+Pseudo Code:
+
+function logError (error) {
+    var errorParsed = parseError(error);
+    appendError(errorFile, error);
+}
+
+function parseError (error) {
+    return {
+        content : getContent(error);
+        timeStamp: getTimeStamp(error);
+    }
+}
+
+function sendEmail (logFile, frecuency) {
+    if (isValidRun(frecuency)){
+        sendErrorEmail(logFile)
+    }
+}
+
+function isValidRun(frecuency) {
+    return checkLasTimeRunned() <= frecuency
+}
+
+function checkLasTimeRunned() {
+    connectDatabase();
+    return getLastfrecuencyRunned()
+}
