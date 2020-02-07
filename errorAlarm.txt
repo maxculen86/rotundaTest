@@ -1,28 +1,58 @@
 General terms:
 
--   Function error trapping code. TimeStamp should be included.
--   Store the trapped error in an incremental log file.
+-   Process will be designed under an obeserver pattern:
+        ErrorObserver
+        │ 
+        ├── errorCatcher: return new observable error envets.
+        |
+        ├── logError: appends the catched error into the log file.
+        |
+        └── sendEmail: send via email all events with bound data.
+
+-   erroCatcher: TimeStamp should be included.
+-   Store the catched error in an incremental log file.
 -   Run the sendEmail function when the error is stored at file.
 -   Email function must check the timeStamp of the last email sended for the email address.
--   In order to check the timeStamp, email function have to store the data in a data base / file. 
+-   In order to check the timeStamp, email function have to store the data in a data base / file.
 
 Pseudo Code:
 
-function logError (error) {
-    var errorParsed = parseError(error);
-    appendError(errorFile, error);
-}
+class ErrorObserver {
+    constructor() {
+        this.error = [];
+    }
 
-function parseError (error) {
-    return {
-        content : getContent(error);
-        timeStamp: getTimeStamp(error);
+    catcher(e) {
+        this.error.push(e);
+    }
+
+    logError(error) {
+        this.errorObservers.forEach((errorObservers) => errorObservers(error));
+    }
+
+    sendEmail (filePath, frecuency) {
+        if (isValidRun(frecuency))
+            sendErrorEmail(filePath)
     }
 }
 
-function sendEmail (logFile, frecuency) {
-    if (isValidRun(frecuency)){
-        sendErrorEmail(logFile)
+const filePath = "/dir/to/path/file/";
+
+ErrorObserver errorObserver = new ErrorObserver();
+var error = getEvent();
+errorObserver.logError(error) => {
+    saveFile(error);
+});
+
+function saveFile(filePath, error) {
+    filePath.open();
+    filePath.append(boundDataError(error));
+    filePath.close();
+}
+function boundDataError(error) {
+    return {
+        content : getContent(error);
+        timeStamp: getTimeStamp(error);
     }
 }
 
