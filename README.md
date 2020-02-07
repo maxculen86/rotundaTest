@@ -1,4 +1,4 @@
-# rotundaTest
+# Rotunda Test
 Rotunda test ex
 
 All files were tested used NodeJS most recent version.
