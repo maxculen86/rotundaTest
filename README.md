@@ -1,7 +1,7 @@
 # Rotunda Test
 Rotunda test ex
 
-All files were tested used NodeJS most recent version.
+All files were tested using NodeJS most recent version.
 
 Please test the script by running the command:
 
